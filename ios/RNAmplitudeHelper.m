@@ -8,7 +8,7 @@
 
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(setup:(NSString* )writeKey flushQueueSize:(int)flushQueueSize)
+RCT_EXPORT_METHOD(setup:(NSString* )writeKey)
 {
   [Amplitude instance].trackingSessionEvents = YES;
   [[Amplitude instance] initializeApiKey: writeKey];
