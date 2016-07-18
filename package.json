@@ -1,0 +1,23 @@
+{
+  "name": "react-native-amplitude-helper",
+  "version": "0.0.1",
+  "description": "Amplitude wrapper for react-native",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radishmedia/react-native-amplitude-helper.git"
+  },
+  "keywords": [
+    "amplitude",
+    "react",
+    "react-native"
+  ],
+  "author": "Radish Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radishmedia/react-native-amplitude-helper/issues"
+  },
+  "homepage": "https://github.com/radishmedia/react-native-amplitude-helper#readme"
+}
