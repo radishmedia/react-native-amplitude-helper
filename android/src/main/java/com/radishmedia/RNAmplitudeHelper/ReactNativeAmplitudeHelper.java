@@ -1,7 +1,4 @@
-package com.radishfiction.ReactNativeAmplitudeHelper;
-
-import android.app.Activity;
-import android.app.Application;
+package com.radishmedia.RNAmplitudeHelper;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -9,6 +6,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
+
+import android.app.Activity;
+import android.app.Application;
 
 import com.amplitude.api.Amplitude;
 import com.amplitude.api.Revenue;
@@ -19,27 +19,27 @@ import org.json.JSONObject;
 
 public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
 
-  private Activity activity = null;
-  private Application application = null;
+  private Activity mActivity = null;
+  private Application mApplication = null;
 
-  public ReactNativeAmplitudeHelper(ReactApplicationContext reactContext, Activity activity, Application application) {
+  public ReactNativeAmplitudeHelper(ReactApplicationContext reactContext, Activity mActivity, Application mApplication) {
     super(reactContext);
-    this.activity = activity;
-    this.application = application;
+    this.mActivity = mActivity;
+    this.mApplication = mApplication;
   }
 
   @Override
   public String getName() {
-    return "ReactNativeAmplitudeHelper";
+    return "RNAmplitudeHelper";
   }
 
   @ReactMethod
   public void setup(String writeKey) {
-    Amplitude.getInstance().initialize(this.activity, apiKey).enableForegroundTracking(this.application);
+    Amplitude.getInstance().initialize(this.mActivity, writeKey).enableForegroundTracking(this.mApplication);
   }
 
   @ReactMethod
-  public void identifyWithTraits(String userId, ReadableMap traits) {
+  public void identifyWithTraits(String userId, ReadableMap properties) {
     Amplitude.getInstance().setUserId(userId);
     try {
       JSONObject props = convertReadableToJsonObject(properties);
@@ -61,7 +61,7 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
       screen.append(name);
       screen.append(" screen");
       JSONObject props = convertReadableToJsonObject(properties);
-      Amplitude.getInstance().logEvent(screen, props);
+      Amplitude.getInstance().logEvent(screen.toString(), props);
     } catch (JSONException exception) {
       return;
     }
@@ -72,7 +72,7 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
     StringBuilder screen = new StringBuilder("Viewed ");
     screen.append(name);
     screen.append(" screen");
-    Amplitude.getInstance().logEvent(screen);
+    Amplitude.getInstance().logEvent(screen.toString());
   }
 
   @ReactMethod
@@ -92,7 +92,7 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void trackPurchase(String productIdentifier, double price, int quantity, String receipt) {
-    Revenue revenue = new Revenue().setProductId(productIdentifier).setPrice(price).setQuantity(quantity).setReceipt(receipt);
+    Revenue revenue = new Revenue().setProductId(productIdentifier).setPrice(price).setQuantity(quantity);
     Amplitude.getInstance().logRevenueV2(revenue);
   }
 
