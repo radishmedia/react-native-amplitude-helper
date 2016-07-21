@@ -27,13 +27,13 @@ RCT_EXPORT_METHOD(identify:(NSString *)userId)
 
 RCT_EXPORT_METHOD(screenWithProps:(NSString *)name properties:(NSDictionary *)properties)
 {
-  NSString* screenName = [NSString stringWithFormat:@"Viewed %@ screen", name];
+  NSString* screenName = [NSString stringWithFormat:@"Viewed %@ Screen", name];
   [[Amplitude instance] logEvent: screenName withEventProperties: properties];
 }
 
 RCT_EXPORT_METHOD(screen:(NSString *)name)
 {
-  NSString* screenName = [NSString stringWithFormat:@"Viewed %@ screen", name];
+  NSString* screenName = [NSString stringWithFormat:@"Viewed %@ Screen", name];
   [[Amplitude instance] logEvent: screenName];
 }
 

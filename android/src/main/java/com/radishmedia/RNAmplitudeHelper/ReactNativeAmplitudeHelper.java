@@ -59,7 +59,7 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
     try {
       StringBuilder screen = new StringBuilder("Viewed ");
       screen.append(name);
-      screen.append(" screen");
+      screen.append(" Screen");
       JSONObject props = convertReadableToJsonObject(properties);
       Amplitude.getInstance().logEvent(screen.toString(), props);
     } catch (JSONException exception) {
@@ -71,7 +71,7 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
   public void screen(String name) {
     StringBuilder screen = new StringBuilder("Viewed ");
     screen.append(name);
-    screen.append(" screen");
+    screen.append(" Screen");
     Amplitude.getInstance().logEvent(screen.toString());
   }
 
