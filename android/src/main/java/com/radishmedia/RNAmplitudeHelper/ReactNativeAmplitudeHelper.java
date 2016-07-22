@@ -55,6 +55,16 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void setUserTraits(ReadableMap properties) {
+    try {
+      JSONObject props = convertReadableToJsonObject(properties);
+      Amplitude.getInstance().setUserProperties(props);
+    } catch (JSONException exception) {
+      return;
+    }
+  }
+
+  @ReactMethod
   public void screenWithProps(String name, ReadableMap properties) {
     try {
       StringBuilder screen = new StringBuilder("Viewed ");

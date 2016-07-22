@@ -25,6 +25,11 @@ RCT_EXPORT_METHOD(identify:(NSString *)userId)
   [[Amplitude instance] setUserId:userId];
 }
 
+RCT_EXPORT_METHOD(setUserTraits:(NSDictionary *)traits)
+{
+  [[Amplitude instance] setUserProperties:traits];
+}
+
 RCT_EXPORT_METHOD(screenWithProps:(NSString *)name properties:(NSDictionary *)properties)
 {
   NSString* screenName = [NSString stringWithFormat:@"Viewed %@ Screen", name];
