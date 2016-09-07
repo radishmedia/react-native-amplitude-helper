@@ -35,7 +35,7 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void setup(String writeKey) {
-    Amplitude.getInstance().initialize(this.mActivity, writeKey).enableForegroundTracking(this.mApplication);
+    Amplitude.getInstance().initialize(this.mActivity, writeKey).enableForegroundTracking(this.mApplication).trackSessionEvents(true);
   }
 
   @ReactMethod
