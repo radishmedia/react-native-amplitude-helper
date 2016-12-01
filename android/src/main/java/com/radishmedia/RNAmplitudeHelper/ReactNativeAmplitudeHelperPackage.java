@@ -13,18 +13,16 @@ import java.util.*;
 
 public class ReactNativeAmplitudeHelperPackage implements ReactPackage {
 
-    private Activity mActivity = null;
     private Application mApplication = null;
 
-    public ReactNativeAmplitudeHelperPackage(Activity activity, Application application) {
-      mActivity = activity;
+    public ReactNativeAmplitudeHelperPackage(Application application) {
       mApplication = application;
     }
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new ReactNativeAmplitudeHelper(reactContext, mActivity, mApplication));
+        modules.add(new ReactNativeAmplitudeHelper(reactContext, mApplication));
         return modules;
     }
 

@@ -19,12 +19,10 @@ import org.json.JSONObject;
 
 public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
 
-  private Activity mActivity = null;
   private Application mApplication = null;
 
-  public ReactNativeAmplitudeHelper(ReactApplicationContext reactContext, Activity mActivity, Application mApplication) {
+  public ReactNativeAmplitudeHelper(ReactApplicationContext reactContext, Application mApplication) {
     super(reactContext);
-    this.mActivity = mActivity;
     this.mApplication = mApplication;
   }
 
@@ -35,7 +33,7 @@ public class ReactNativeAmplitudeHelper extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void setup(String writeKey) {
-    Amplitude.getInstance().initialize(this.mActivity, writeKey).enableForegroundTracking(this.mApplication).trackSessionEvents(true);
+    Amplitude.getInstance().initialize(getCurrentActivity(), writeKey).enableForegroundTracking(this.mApplication).trackSessionEvents(true);
   }
 
   @ReactMethod
