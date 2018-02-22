@@ -1,6 +1,6 @@
 {
   "name": "react-native-amplitude-helper",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Amplitude wrapper for react-native",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
