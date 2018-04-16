@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:1.5.0'
     }
 }
 
@@ -33,5 +33,5 @@ android {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile 'com.amplitude:android-sdk:2.14.1'
+    compile 'com.amplitude:android-sdk:2.9.2'
 }
